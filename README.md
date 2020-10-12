@@ -1,4 +1,4 @@
-# hotel_booking
+# Parking Place App
 
 A new Flutter project.
 
