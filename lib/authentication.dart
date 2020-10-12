@@ -5,9 +5,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 FirebaseAuth auth = FirebaseAuth.instance;
 final gooleSignIn = GoogleSignIn();
 
-// a simple sialog to be visible everytime some error occurs
+
 showErrDialog(BuildContext context, String err) {
-  // to hide the keyboard, if it is still p
+  
   FocusScope.of(context).requestFocus(new FocusNode());
   return showDialog(
     context: context,
@@ -26,8 +26,7 @@ showErrDialog(BuildContext context, String err) {
   );
 }
 
-// many unhandled google error exist
-// will push them soon
+
 Future<bool> googleSignIn() async {
   GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
 
@@ -50,8 +49,7 @@ Future<bool> googleSignIn() async {
   return Future.value(true);
 }
 
-// instead of returning true or false
-// returning user to directly access UserID
+
 Future<User> signIn(String email, String password, BuildContext context) async {
   try {
     UserCredential result =
@@ -82,15 +80,12 @@ Future<User> signIn(String email, String password, BuildContext context) async {
         showErrDialog(context, e.code);
         break;
     }
-    // since we are not actually continuing after displaying errors
-    // the false value will not be returned
-    // hence we don't have to check the valur returned in from the signin function
-    // whenever we call it anywhere
+   
     return Future.value(null);
   }
 }
 
-// change to Future<FirebaseUser> for returning a user
+
 Future<User> signUp(String email, String password, BuildContext context) async {
   try {
     UserCredential result = await auth.createUserWithEmailAndPassword(
